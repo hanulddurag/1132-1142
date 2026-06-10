@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중등 국어 디지털 학습관</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght=300;400;500;700;900&display=swap');
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .main-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .main-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header Navigation (수동 연동 설정 버튼을 완전히 소거한 정돈된 헤더) -->
+    <header class="bg-indigo-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home')">
+                <div class="bg-white text-indigo-600 p-2 rounded-lg font-black text-xl shadow-inner">📖</div>
+                <h1 class="text-xl sm:text-2xl font-black tracking-tight">중등 국어 디지털 학습관</h1>
+            </div>
+            <div class="text-xs bg-indigo-750/70 px-3.5 py-2 rounded-full border border-indigo-400/20 flex items-center gap-1.5 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 자동 실시간 채점 연동 중
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        
+        <!-- Welcome Hero Area (Home) -->
+        <section id="home-section" class="space-y-8 animate-fade-in">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center sm:text-left">
+                <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="absolute -left-16 -top-16 w-48 h-48 bg-indigo-400/20 rounded-full blur-xl"></div>
+                <div class="relative z-10 max-w-3xl mx-auto sm:mx-0">
+                    <span class="bg-indigo-900/40 text-indigo-200 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Active Learning Portal</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 mb-3 leading-tight">스스로 학습하고<br class="hidden sm:inline">정확하게 평가하는 우리 교실!</h2>
+                    <p class="text-indigo-100 text-sm sm:text-base leading-relaxed">개념 공부부터 즉시 오답 분석이 진행되는 순차 배열 형성평가까지, 국어 실력을 가꾸어 보세요.</p>
+                </div>
+            </div>
+
+            <!-- 대칭형 홈 화면 카드 레이아웃 (image_6b0be6.png 디자인 완벽 구현) -->
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Card 1: 상호 작용적 매체와 소통 (노란색/오렌지색 디자인 포인트) -->
+                    <div class="main-card bg-white rounded-3xl p-8 border border-slate-100 shadow-xs flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl font-bold shadow-sm">
+                                📱
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-slate-800">상호 작용적 매체와 소통</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                누리집, SNS, 온라인 대화방 등 다양한 매체의 특성을 이해하고 공·사적 맥락에 맞춰 올바르게 소통하는 방법을 학습합니다.
+                            </p>
+                        </div>
+                        <button onclick="selectSubject('interactive-media')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold py-4 px-6 rounded-2xl transition flex items-center justify-center gap-2 shadow-sm shadow-amber-500/10">
+                            학습 시작하기 <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Card 2: 토의하기 (인디고/보라색 디자인 포인트) -->
+                    <div class="main-card bg-white rounded-3xl p-8 border border-slate-100 shadow-xs flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-2xl font-bold shadow-sm">
+                                👥
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-slate-800">토의하기</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                공동의 문제를 해결하기 위해 여러 사람이 대등한 관계에서 다양한 의견을 나누고 합리적인 조정을 거치는 소통을 배웁니다.
+                            </p>
+                        </div>
+                        <button onclick="selectSubject('discussing')" class="w-full bg-indigo-600 hover:bg-indigo-750 text-white font-extrabold py-4 px-6 rounded-2xl transition flex items-center justify-center gap-2 shadow-sm shadow-indigo-600/10">
+                            학습 시작하기 <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-navigation & Content Area (Selected Subject) -->
+        <section id="subject-section" class="hidden space-y-6">
+            <!-- Back & Title -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-100">
+                <button onclick="showSection('home')" class="text-slate-500 hover:text-slate-800 text-sm font-semibold flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg transition">
+                    <i class="fa-solid fa-arrow-left"></i> 처음으로 돌아가기
+                </button>
+                <div class="text-right sm:text-left">
+                    <span id="subject-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-600 uppercase tracking-wider">단원명</span>
+                    <h2 id="subject-title" class="text-2xl font-black text-slate-800 mt-1">대주제 타이틀</h2>
+                </div>
+            </div>
+
+            <!-- 알약(Pill) 모양의 수평 스크롤 탭 레이아웃 (image_6b0c2b.png 스타일 완벽 반영) -->
+            <div class="max-w-5xl mx-auto flex justify-center">
+                <div id="pill-tabs-container" class="flex flex-wrap gap-2 sm:gap-3 justify-center py-2 px-4 bg-white rounded-full shadow-inner border border-slate-100">
+                    <!-- Javascript에 의해 알약형 탭 버튼이 동적 생성됩니다 -->
+                </div>
+            </div>
+
+            <!-- Tab Content 1: 기본 개념 및 소주제 공부 영역 -->
+            <div id="tab-concept-content" class="hidden space-y-6 animate-fade-in max-w-5xl mx-auto">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+            <!-- Tab Content 2: 형성 평가 해결 영역 -->
+            <div id="tab-exam-content" class="hidden space-y-6 animate-fade-in max-w-5xl mx-auto">
+                <!-- 인적 사항 입력 및 연동 상태 섹션 -->
+                <div class="bg-gradient-to-br from-indigo-50 to-slate-50 p-6 sm:p-8 rounded-2xl border border-indigo-100 shadow-sm">
+                    <h3 class="text-lg sm:text-xl font-extrabold text-indigo-900 mb-2 flex items-center gap-2">
+                        <span>📝</span> 학생 정보 및 단원 형성 평가
+                    </h3>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        학년, 반, 번호, 이름을 먼저 올바르게 기입해 주세요. 
+                        <strong>본 평가는 1번부터 10번까지 순서대로 정렬되어 출제되며, 학생이 정답을 체크하면 바로 채점 상태와 정답 원리가 노출됩니다. 최종 풀이가 완료되면 제출 단추를 눌러주세요.</strong>
+                    </p>
+                    
+                    <!-- 학년, 반, 번호, 이름 입력 그리드 -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-indigo-700 mb-1">학년</label>
+                            <select id="user-grade" onchange="saveUserProfile()" class="w-full bg-white border border-indigo-200 rounded-xl px-4 py-3 font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm">
+                                <option value="">학년 선택</option>
+                                <option value="1">1 학년</option>
+                                <option value="2">2 학년</option>
+                                <option value="3">3 학년</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-indigo-700 mb-1">반</label>
+                            <input id="user-class" type="number" min="1" max="20" placeholder="예: 3" oninput="saveUserProfile()" class="w-full bg-white border border-indigo-200 rounded-xl px-4 py-3 font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-indigo-700 mb-1">번호</label>
+                            <input id="user-num" type="number" min="1" max="50" placeholder="예: 15" oninput="saveUserProfile()" class="w-full bg-white border border-indigo-200 rounded-xl px-4 py-3 font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-indigo-700 mb-1">이름</label>
+                            <input id="user-name" type="text" placeholder="예: 홍길동" oninput="saveUserProfile()" class="w-full bg-white border border-indigo-200 rounded-xl px-4 py-3 font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 형성평가 문제 구성 영역 (총 10문제) -->
+                <div id="exam-questions-box" class="space-y-6">
+                    <!-- Loaded dynamically in original order by JS -->
+                </div>
+
+                <!-- 답안 제출하기 버튼 -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-md text-center">
+                    <!-- 전송 진행 상태 표시용 로더 -->
+                    <div id="submit-loading" class="hidden text-indigo-600 font-bold mb-4 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-spinner animate-spin"></i> 구글 스프레드로 성적을 직접 저장하는 중입니다...
+                    </div>
+                    <button id="btn-submit-exam" onclick="submitExam()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-base sm:text-lg py-4 px-8 rounded-2xl transition shadow-lg inline-flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> 형성평가 최종 결과 스프레드시트에 전송
+                    </button>
+                    <p class="text-xs text-slate-500 mt-3">전체 문항 풀이 시 실시간으로 정오표를 확인해볼 수 있으며, 전송을 누르면 점수가 즉시 구글 스프레드시트의 해당 단원 탭으로 축적 보존됩니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alert Dialog Modal -->
+    <div id="custom-alert" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-[60]">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl border border-slate-100">
+            <div id="alert-icon" class="text-4xl"></div>
+            <h4 id="alert-title" class="text-lg font-bold text-slate-800">안내</h4>
+            <p id="alert-message" class="text-slate-600 text-sm whitespace-pre-line"></p>
+            <button onclick="closeAlert()" class="w-full bg-indigo-600 hover:bg-indigo-750 text-white font-bold py-2.5 px-4 rounded-xl transition">확인</button>
+        </div>
+    </div>
+
+    <!-- Interactive JS Core Logic -->
+    <script>
+        // Core Database (각 단원별 10문항으로 압축 및 OX문항 2개로 정비, 선택 정답지 골고루 재배치 완료)
+        const learningData = {
+            'interactive-media': {
+                badge: '국어 1학년 1학기',
+                title: '상호 작용적 매체와 소통',
+                sheetName: '시트 2',
+                tabs: [
+                    { 
+                        key: 'media-char', 
+                        label: '매체 특성', 
+                        type: 'concept', 
+                        content: `
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 상호 작용적 매체의 특성
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    인터넷과 모바일 기술의 발달로 등장한 새로운 소통 매체들은 과거의 일방향적 대중 매체(TV, 라디오 등)와 달리 매우 강력한 쌍방향 소통 채널을 제공합니다.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
+                                        <span class="text-2xl">🔄</span>
+                                        <h4 class="font-extrabold text-slate-800 text-base">쌍방향 의사소통</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">정보의 송신자가 수신자 경계가 모호하며 실시간으로 피드백을 주고받을 수 있습니다.</p>
+                                    </div>
+                                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
+                                        <span class="text-2xl">🚀</span>
+                                        <h4 class="font-extrabold text-slate-800 text-base">시간·공간의 초월</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">물리적 거리에 상관없이 언제 어디서나 즉각적인 소통이 가능합니다.</p>
+                                    </div>
+                                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
+                                        <span class="text-2xl">🌐</span>
+                                        <h4 class="font-extrabold text-slate-800 text-base">관계망과 네트워크</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">공통의 관심사를 가진 다수의 대중이 모여 손쉽게 네트워크를 형성할 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    { 
+                        key: 'media-type', 
+                        label: '매체 종류', 
+                        type: 'concept', 
+                        content: `
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 디지털 매체의 구체적 예시
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    우리가 일상 속에서 가장 자주 접하는 3대 상호 작용 매체의 예시와 공공/사적 쓰임새입니다.
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="p-5 bg-amber-50/40 rounded-2xl border border-amber-100 flex items-start gap-4">
+                                        <span class="text-3xl">💻</span>
+                                        <div>
+                                            <h4 class="font-extrabold text-amber-900 text-base mb-1">누리집 (웹사이트)</h4>
+                                            <p class="text-xs text-slate-600 leading-relaxed">공공 기관, 학교 등의 공식적인 홍보와 일관된 정보 전달에 적합하며 파일 아카이빙 및 댓글 피드백 기능이 우수합니다.</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex items-start gap-4">
+                                        <span class="text-3xl">💬</span>
+                                        <div>
+                                            <h4 class="font-extrabold text-indigo-900 text-base mb-1">온라인 대화방</h4>
+                                            <p class="text-xs text-slate-600 leading-relaxed">실시간 즉시 응답과 친밀하고 가벼운 의견 교류에 알맞으며, 그림말(이모티콘)이나 사진을 실시간으로 활용합니다.</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-5 bg-emerald-50/40 rounded-2xl border border-emerald-100 flex items-start gap-4">
+                                        <span class="text-3xl">📱</span>
+                                        <div>
+                                            <h4 class="font-extrabold text-emerald-900 text-base mb-1">사회 관계망 서비스 (SNS)</h4>
+                                            <p class="text-xs text-slate-600 leading-relaxed">자신의 개성을 표현하고 팔로워들과 정보를 실시간 공유하여 글로벌 네트워크 인맥을 형성하는 데 탁월합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    { key: 'exam', label: '형성 평가', type: 'exam' }
+                ],
+                exams: [
+                    // 객관식 7문항, OX 2문항, 서술형 1문항 = 총 10문항 (답안 골고루 재분배 완수)
+                    { id: 1, type: 'choice', question: "상호 작용적 매체의 고유한 특성 규정으로 가장 부적절하고 잘못된 것은?", options: ["전파와 피드백이 실시간이자 쌍방향에 준하여 구현된다.", "생산자와 수용자가 끊임없이 상호 위치를 바꿀 만큼 평등한 경계를 지닌다.", "글자가 전파되어 타인에게 이르는 시공간의 한계가 극도로 넓어 편의를 누린다.", "한번 올라온 자료는 오직 지은이만 평생 볼 수 있고 독자의 의견 추가는 불가능하다."], correct: 3, score: 10, explanation: "상호 작용적 매체는 누구나 자유롭게 댓글이나 게시글을 적으며 소통과 정보 가공에 가담할 수 있는 민주적 특징을 가지고 있습니다." },
+                    { id: 2, type: 'choice', question: "반려 강아지 '콩이'를 잃어버렸을 때, 동네 친구들에게 정보를 다급히 뿌려 전파하는 긴박한 소통 수단으로 가장 기민하고 탁월한 매체는?", options: ["등기 우편의 순차 우송", "모바일 메신저 내 단체 온라인 대화방", "공공 도서관 문헌 수집실 방문", "학술 연구 논문집 기고"], correct: 1, score: 10, explanation: "온라인 단체 대화방은 구성원 전체에게 즉각 대화를 전파하고 답을 받을 수 있어 긴급성에 최고로 유용합니다." },
+                    { id: 3, type: 'choice', question: "온라인 대화방에서의 슬기로운 의사소통 전략으로 가장 미흡하고 비윤리적인 것은?", options: ["상황에 맞춰 센스 있는 그림말로 텍스트의 딱딱한 공기를 부드럽게 유도한다.", "공식 모임방에선 비속어나 멸칭을 지양하고 표준 정중한 말을 사용한다.", "상대방의 개인적인 비밀 정보를 동의 없이 캡처해 타인에게 유포한다.", "모든 구성원이 차별받거나 침묵 속에 소외되지 않도록 존중한다."], correct: 2, score: 10, explanation: "상대방의 비밀 보장 권리를 무시하고 무단으로 화면을 저장해 단톡방에 유출하는 행위는 개인의 소중한 정보를 침해하는 그릇된 태도입니다." },
+                    { id: 4, type: 'choice', question: "학교나 공공 단체에서 '자원봉사자 모집 요강'처럼 신청서 서류를 다운받게 해 대외로 공지하려 할 때 가장 튼튼하고 안정적인 매체 갈래는?", options: ["친밀한 친구와의 1대1 인공지능 개인 귓속말", "동네 인근 한 장짜리 자필 메모장", "공공 기관 또는 학교 공식 누리집 (웹사이트)", "음악 파일 전용 스트리밍 재생기"], correct: 2, score: 10, explanation: "누리집은 안정적인 자료 다운로드, 가독성 높은 표 공지 등을 유지할 수 있어 대외용 수집 안내에 가장 적합합니다." },
+                    { id: 5, type: 'choice', question: "누리집에 올라온 정보의 내용에 대중이 수집 및 의사 확인을 하며 의견을 개진하는 쌍방향 소통 채널로 가장 널리 쓰이는 기능은?", options: ["누리집 메인화면 로고 이미지 클릭", "본문 아래 기재하는 댓글 달기 기능", "회원가입 약관 텍스트 정독하기", "배경 음악 음량 조절 장치 조작"], correct: 1, score: 10, explanation: "댓글은 일방적인 읽기에서 벗어나 독자가 주도적으로 소감과 피드백을 실시간 전달하는 쌍방향 창구입니다." },
+                    { id: 6, type: 'choice', question: "온라인 대화방(단톡방)에서 지나친 줄임말이나 외계어를 사용할 때 생길 수 있는 심각한 폐해는?", options: ["컴퓨터 배터리 소모량이 기하급수적으로 폭증한다.", "스마트폰 기기에 하드웨어적 결함이 나타난다.", "의사소통이 정확히 되지 않고 세대 간 오해나 단절을 불러일으킬 수 있다.", "개인정보 보완 상태가 완벽히 파괴된다."], correct: 2, score: 10, explanation: "과도한 무근거 줄임말은 국어 규범을 해치고 세대 간 의사소통 장벽 및 이해 격차를 발생시킵니다." },
+                    { id: 7, type: 'choice', question: "공식 단체 누리집에 '자원봉사자 구인' 안내 글을 기고할 때 독자가 원하는 목적을 달성하게 하기 위해 본문에 반드시 명시해야 하는 정당한 항목이 아닌 것은?", options: ["구체적인 봉사 일자 및 장소", "서류 제출 기한 및 신청서 작성법", "작성 단체의 책임 주체", "작성 부원의 어린 시절 일기 전문"], correct: 3, score: 10, explanation: "공적인 알림글에는 신뢰를 위해 일시, 절차, 작성 주체만 명료하게 다뤄야 하며 사적 이야기는 배제해야 합니다." },
+                    // OX 2문항 (3문항 이하)
+                    { id: 8, type: 'choice', question: "[O/X 판정] 상호 작용적 매체는 단순히 한 사람만 독점적으로 뉴스를 배포하는 일방 소통 방식이다.", options: ["그렇다 (O)", "아니다 (X)"], correct: 1, score: 10, explanation: "아닙니다. 독점 배포가 아니라 다수가 정보의 주인이 되어 대등하게 소통을 맞받아치는 쌍방향 구조입니다." },
+                    { id: 9, type: 'choice', question: "[O/X 판정] 온라인 대화방에서는 상대가 본 메시지를 실시간으로 열람했는지 알 수 있는 숫자 기능 등이 존재한다.", options: ["그렇다 (O)", "아니다 (X)"], correct: 0, score: 10, explanation: "그렇습니다. 수신인이 텍스트를 읽으면 숫자나 표시가 지워져 실시간 피드백 정황을 알 수 있습니다." },
+                    // 서술형 1문항
+                    { id: 10, type: 'text', question: "'누리집'과 '온라인 대화방'은 둘 다 디지털 소통을 선도하는 상호 작용 매체입니다. 두 매체가 지닌 '쌍방향성'이라는 공통된 의의에 대해 간단히 한 줄로 약술해 보시오.", correctAnswerPattern: "쌍방향, 소통, 피드백, 실시간, 전달", score: 10, explanation: "기존 인쇄 매체 등과 달리 독자가 가만히 지식을 수동 수집하는 것에 머무르지 않고, 적극적이고 빠르게 정정과 피드백을 생산하여 발신인과 교감할 수 있음을 적으면 정답 처리됩니다." }
+                ]
+            },
+            'discussing': {
+                badge: '국어 1학년 1학기',
+                title: '토의하기',
+                sheetName: '시트 3',
+                tabs: [
+                    { 
+                        key: 'discuss-def', 
+                        label: '정의와 의의', 
+                        type: 'concept', 
+                        content: `
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의(Discussion)의 올바른 이해
+                                </h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">
+                                    토의란 공동의 현안 문제를 해결하기 위해 여러 사람이 협력적으로 지혜를 모으는 민주적 의사소통 방식입니다.
+                                </p>
+                                <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 space-y-2">
+                                    <h4 class="font-extrabold text-indigo-900 text-base">⚠️ 토론(Debate)과의 핵심 차이점</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed">
+                                        토론은 찬성과 반대로 편을 나누어 논리적 우세를 겨루는 <strong>경쟁적 소통</strong>인 반면, 토의는 편 가르기 없이 최선의 대안을 함께 조율해 나가는 <strong>협력적 소통</strong>입니다.
+                                    </p>
+                                </div>
+                            </div>
+                        `
+                    },
+                    { 
+                        key: 'discuss-role', 
+                        label: '구성원 역할', 
+                        type: 'concept', 
+                        content: `
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의 참여 주체의 기본 임무
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 space-y-2">
+                                        <span class="text-2xl">🗣️</span>
+                                        <h4 class="font-extrabold text-slate-800 text-base">사회자의 역할</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">중립적 위치에서 토의 흐름을 통제하고, 공평하게 발언 기회를 제공하며 요약·조율합니다.</p>
+                                    </div>
+                                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 space-y-2">
+                                        <span class="text-2xl">🙋</span>
+                                        <h4 class="font-extrabold text-slate-800 text-base">토의자의 역할</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">객관적 지표와 통계 등 정당한 근거를 들어 의견을 발표하고, 타인의 견해를 정중히 경청합니다.</p>
+                                    </div>
+                                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 space-y-2">
+                                        <span class="text-2xl">👥</span>
+                                        <h4 class="font-extrabold text-slate-800 text-base">청중의 역할</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">경청 중 궁금한 지점을 체크하고 질의응답 시간에 적절한 질문을 던져 대안을 정교화합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    { 
+                        key: 'discuss-step', 
+                        label: '토의 절차', 
+                        type: 'concept', 
+                        content: `
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의의 일반적인 절차
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-slate-700">
+                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
+                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">01</div>
+                                        <div>
+                                            <strong class="text-indigo-900 block mb-1 text-sm">① 토의 주제 정하기</strong>
+                                            <p class="text-xs text-slate-500 leading-relaxed">공동체 모두가 공감하고 실재적으로 타개할 수 있는 공동의 현안 주제를 선정합니다.</p>
+                                        </div>
+                                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-indigo-300 z-10"><i class="fa-solid fa-chevron-right"></i></div>
+                                    </div>
+                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
+                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">02</div>
+                                        <div>
+                                            <strong class="text-indigo-900 block mb-1 text-sm">② 토의 준비하기</strong>
+                                            <p class="text-xs text-slate-500 leading-relaxed">각자의 역할을 배분하고, 회의 주제에 맞는 제안 대안 및 논리적 지표 근거들을 준비합니다.</p>
+                                        </div>
+                                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-indigo-300 z-10"><i class="fa-solid fa-chevron-right"></i></div>
+                                    </div>
+                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
+                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">03</div>
+                                        <div>
+                                            <strong class="text-indigo-900 block mb-1 text-sm">③ 토의하기</strong>
+                                            <p class="text-xs text-slate-500 leading-relaxed">모든 구성원이 수평적인 상태에서 다양하게 의견 교환을 진행하고 대안들을 검토 조율합니다.</p>
+                                        </div>
+                                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-indigo-300 z-10"><i class="fa-solid fa-chevron-right"></i></div>
+                                    </div>
+                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
+                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">04</div>
+                                        <div>
+                                            <strong class="text-indigo-900 block mb-1 text-sm">④ 토의 내용 정리하기</strong>
+                                            <p class="text-xs text-slate-500 leading-relaxed">도출된 장단점을 바탕으로 합리적인 최선책을 선택하고 결과를 요약 합의 및 기록합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    { 
+                        key: 'discuss-type', 
+                        label: '토의 유형', 
+                        type: 'concept', 
+                        content: `
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 4대 토의 유형의 차이
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
+                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">⭕ 원탁 토의 (Round-table)</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">상하관계 없이 전원이 대등하고 유기적으로 동그랗게 둘러앉아 친근하게 소통하는 비공식적 토의입니다.</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
+                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">👥 패널 토의 (Panel Discussion)</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">서로 의견이 상반되거나 특수 지식을 가진 소수 배심원들이 다수 청중 앞에서 사회자 지휘로 공개 의견을 펴는 형태입니다.</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
+                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">🎓 심포지엄 (Symposium)</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">하나의 공식 주제를 두고 전문가들이 공식적인 발표회를 연속적으로 전개한 뒤 정돈된 토의를 맺는 고도의 학술적 방식입니다.</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
+                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">🏛️ 포럼 (Forum)</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">현안 연설이 끝난 후 사회자의 안내로 넓은 공간에 참여한 모든 청중들이 발언자에게 정면으로 피드백을 맞교환하는 대중형 토의입니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    { key: 'exam', label: '형성 평가', type: 'exam' }
+                ],
+                exams: [
+                    // 객관식 7문항, OX 2문항, 서술형 1문항 = 총 10문항 (답안 골고루 재분배 완수)
+                    { id: 1, type: 'choice', question: "토의(Discussion)라는 말하기 활동의 근본 취지와 의의로 가장 적절한 서술은?", options: ["경쟁을 붙여 찬성과 반대 양자의 생존 승패를 입증한다.", "다수의 공동 현안 문제를 다각도로 보듬고 협력하여 대안을 구축한다.", "한 명의 리더가 기재한 규칙에 절대 맹목 복종하게 길들인다.", "주제와 무관한 가벼운 소담으로 지인과 시간을 소모한다."], correct: 1, score: 10, explanation: "토의는 찬반 갈등과 경쟁 우열을 다투는 토론과 다른 점이 있으며, 공동의 고민 해결을 위한 협력을 지향합니다." },
+                    { id: 2, type: 'choice', question: "민주적 토의의 4대 진행 단계를 올바르고 질서정연하게 서열화한 배열은?", options: ["결과 발표 -> 의견 도배 -> 주제 버리기 -> 퇴장", "의견 고집 -> 대안 무시 -> 토의하기 -> 사회자 해임", "주제 선정 -> 토의 준비 -> 토의하기 -> 결과 정리", "도구 준비 -> 자리 청소 -> 사진 인화 -> 결과 분실"], correct: 2, score: 10, explanation: "주제를 고르고 준비를 완전히 행한 후 본격적 소통을 거쳐 결과를 합의 도출하는 4단계 흐름을 지닙니다." },
+                    { id: 3, type: 'choice', question: "'우리 반 학급 자리 교체안'을 회의하기 전에 토의자가 준비할 필수 정보로 가장 알맞은 것은?", options: ["운동장의 잔디 종류 확인", "담임교사의 지난 주말 취미 분석", "현재 우리 반 구성원들이 자리를 바꿀 때 느끼는 고충 및 해법 제안 근거 마련", "청소용 빗자루 수명 분석"], correct: 2, score: 10, explanation: "준비 과정에서는 오늘 다룰 문제 현상에 관한 고충 실태나 제안 배경을 입증하는 자료가 있어야 합니다." },
+                    { id: 4, type: 'choice', question: "토의 참여자 중 '사회자'가 가져야 할 가치 덕목과 임무로 가장 합당한 내용은?", options: ["특정 친구의 발언에만 연신 고개를 끄덕이며 전폭 동의한다.", "회의가 시작하자마자 구석에서 조용히 독서를 하며 참견을 배제한다.", "다른 토의자들의 대화 중 시끄럽다며 크게 고함을 쳐 모두를 정지시킨다.", "중립적 위치에서 대화를 공정히 유도하고, 이견 갈등 시 규칙에 의거 조율한다."], correct: 3, score: 10, explanation: "사회자는 주관적인 편향을 버리고 철저히 공평하고 중립적인 위치에서 규칙을 통제하며 조율하는 역할을 해야 합니다." },
+                    { id: 5, type: 'choice', question: "토의 중 은우가 '자리 선택용 어플리케이션을 가용하자'고 했을 때 지아가 '추첨의 세부 동작법은 어떻게 되느냐'라고 묻는 일련의 질답 과정이 포함된 단계는?", options: ["토의자 간 구체적 대안 검토 및 의견 교환 단계", "토의 마무리 정리 단계", "토의의 완전한 개막 개시 단계", "청중과의 사담 단계"], correct: 0, score: 10, explanation: "대안의 적용성이나 세부 원리를 점검하며 비평하는 단계를 '의견 교환(토의 실행)'으로 정의합니다." },
+                    { id: 6, type: 'choice', question: "대등한 자격을 지닌 소속 모둠원들이 동그란 대형으로 빙 둘러앉아 거리낌 없이 편하게 자신의 아이디어를 피력하는 회의 형태는?", options: ["1대1 단절 토론", "원탁 토의", "다수 청중 앞의 패널 프레젠테이션", "익명 비밀 투표"], correct: 1, score: 10, explanation: "위아래 지위 분리 없이 수평 배치하여 활발히 회의하는 전형적인 형식이 '원탁 토의'입니다." },
+                    { id: 7, type: 'choice', question: "토의 진행 시 모둠원 서연이가 기분이 상한 거친 표정으로 타인의 가치를 비하할 때, 사회자 민준이가 취해야 할 가장 지혜로운 중재 행동은?", options: ["서연이와 똑같이 화를 내며 맞받아친다.", "서연이에게 차분하게 발언 규칙과 존중의 태도를 지키도록 단호하게 유도하고 평정심을 회복시킨다.", "서연이만 무안하게 회의실 밖으로 즉각 퇴실 조치한다.", "회의 진행을 즉시 포기하고 누워 잔다."], correct: 1, score: 10, explanation: "토의장 내 규칙 위배나 갈등이 관찰되면, 사회자는 정연하고 정중하게 규율 이행과 경청 배려를 환기시켜야 합니다." },
+                    // OX 2문항 (3문항 이하 규정 준수)
+                    { id: 8, type: 'choice', question: "[O/X 판정] 토의는 모둠원들이 한마음으로 합치하여 최적의 대안과 해법을 구하려는 협동 활동이다.", options: ["그렇다 (O)", "아니다 (X)"], correct: 0, score: 10, explanation: "그렇습니다. 승리를 쟁취하려는 경쟁적 토론과 달리, 다 같이 타당안을 만들어 조화롭게 수렴해 나갑니다." },
+                    { id: 9, type: 'choice', question: "[O/X 판정] 토의자는 근거가 다소 미약하더라도 무조건 화를 내고 목소리를 높이면 제안이 수월하게 채택된다.", options: ["그렇다 (O)", "아니다 (X)"], correct: 1, score: 10, explanation: "아닙니다. 감정적 대응은 질서를 깨고 상대에게 거부감을 불러와 의견 합치를 방해합니다." },
+                    // 서술형 1문항 (총 10개 문제)
+                    { id: 10, type: 'text', question: "'토의'에서 토의자가 자신의 생각을 펼칠 때, 단지 개인 주관적 상상력에만 기대지 않고 믿음직한 '객관적 근거'를 보강해야 하는 까닭에 대해 '합리적' 및 '설득력'이라는 어휘를 포함해 논증하시오.", correctAnswerPattern: "합리적, 설득력, 근거, 해결, 조율", score: 10, explanation: "단순히 지은이 감정 주장만으로는 합의를 맺기 곤란하므로 정확한 자료를 덧붙여 타당성을 제시해야만 '합리적' 조율 결과와 정당한 '설득력'을 가질 수 있습니다." }
+                ]
+            }
+        };
+
+        // Current Interactive App States
+        let currentSubject = '';
+        let currentTab = 'concept';
+        
+        // 형성평가 관련 상태 (정리 퀴즈가 전면 통합되어 10개 문항을 제어함)
+        let currentShuffledExams = []; 
+        
+        let userProfile = {
+            grade: '',
+            classNum: '',
+            num: '',
+            name: ''
+        };
+
+        // Initialize application on load
+        window.onload = function() {
+            // Check for saved profile
+            loadSavedUserProfile();
+            showSection('home');
+        };
+
+        // Navigate page sections (Home vs Subject Study)
+        function showSection(sectionId) {
+            if (sectionId === 'home') {
+                document.getElementById('home-section').classList.remove('hidden');
+                document.getElementById('subject-section').classList.add('hidden');
+                currentSubject = '';
+            } else if (sectionId === 'subject') {
+                document.getElementById('home-section').classList.add('hidden');
+                document.getElementById('subject-section').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Action when subject card clicked
+        function selectSubject(subjectKey) {
+            currentSubject = subjectKey;
+            const data = learningData[subjectKey];
+
+            // Render Title & Badges
+            document.getElementById('subject-badge').innerText = data.badge;
+            document.getElementById('subject-title').innerText = data.title;
+
+            // Generate dynamic sub-tabs as Rounded Pills (image_6b0c2b.png 스타일 정밀 반영)
+            renderSubTabs(subjectKey);
+
+            // 형성평가 10개 문제에 대하여 순서를 섞지 않고 복사 배포 (순차 정렬 출제)
+            currentShuffledExams = [...data.exams];
+            generateExamQuestions(currentShuffledExams);
+
+            // Switch to initial tab (첫 서브 탭 강제 선택 작동)
+            showSection('subject');
+            switchTab(data.tabs[0].key);
+        }
+
+        // 알약형 수평 탭 메뉴 렌더러 함수
+        function renderSubTabs(subjectKey) {
+            const container = document.getElementById('pill-tabs-container');
+            container.innerHTML = '';
+            const data = learningData[subjectKey];
+
+            data.tabs.forEach(tab => {
+                const btn = document.createElement('button');
+                btn.id = `btn-tab-${tab.key}`;
+                btn.onclick = () => switchTab(tab.key);
+                btn.className = "px-5 py-2.5 rounded-full text-sm font-bold border transition shadow-xs";
+                btn.innerText = tab.label;
+                container.appendChild(btn);
+            });
+        }
+
+        // Handle Active Tab transitions
+        function switchTab(tabKey) {
+            currentTab = tabKey;
+            const data = learningData[currentSubject];
+            const activeTab = data.tabs.find(t => t.key === tabKey);
+
+            // 알약형 탭 활성화 여부에 따른 동적 UI 클래스 스위칭 (image_6b0c2b.png 스타일 반영)
+            data.tabs.forEach(tab => {
+                const btn = document.getElementById(`btn-tab-${tab.key}`);
+                if (btn) {
+                    if (tab.key === tabKey) {
+                        btn.className = "px-6 py-2.5 rounded-full text-sm font-extrabold bg-indigo-600 text-white border-indigo-600 shadow-md transition-all duration-200 scale-105";
+                    } else {
+                        btn.className = "px-5 py-2.5 rounded-full text-sm font-semibold bg-white text-slate-600 border-slate-200 hover:bg-slate-50 transition shadow-xs";
+                    }
+                }
+            });
+
+            const conceptContent = document.getElementById('tab-concept-content');
+            const examContent = document.getElementById('tab-exam-content');
+
+            // 선택된 서브 탭 종류에 따른 내용 전면 스위칭
+            if (activeTab.type === 'concept') {
+                conceptContent.innerHTML = activeTab.content;
+                conceptContent.classList.remove('hidden');
+                examContent.classList.add('hidden');
+            } else if (activeTab.type === 'exam') {
+                conceptContent.classList.add('hidden');
+                examContent.classList.remove('hidden');
+            }
+        }
+
+        /* ✏️ FORMATIVE EVALUATION LOGIC (형성 평가 10문항 순서대로 생성) */
+        function generateExamQuestions(exams) {
+            const container = document.getElementById('exam-questions-box');
+            container.innerHTML = '';
+
+            exams.forEach((ex) => {
+                const div = document.createElement('div');
+                div.className = "bg-white p-6 sm:p-8 rounded-2xl border border-slate-100 shadow-xs space-y-4";
+                
+                const badgeText = ex.type === 'choice' ? '객관식' : '서술형';
+                const badgeColor = ex.type === 'choice' ? 'bg-indigo-50 text-indigo-700' : 'bg-purple-50 text-purple-700';
+
+                let inputHtml = '';
+                if (ex.type === 'choice') {
+                    inputHtml = `<div class="grid grid-cols-1 gap-2.5 mt-2">`;
+                    ex.options.forEach((opt, optIdx) => {
+                        inputHtml += `
+                            <label class="flex items-center gap-3 p-3 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="exam-q-${ex.id}" value="${optIdx}" onchange="checkRealtimeAnswer(${ex.id}, 'choice')" class="w-4 h-4 text-indigo-600 focus:ring-indigo-300">
+                                <span class="text-sm font-semibold text-slate-700">${optIdx + 1}. ${opt}</span>
+                            </label>
+                        `;
+                    });
+                    inputHtml += `</div>`;
+                } else {
+                    inputHtml = `
+                        <div class="space-y-3">
+                            <textarea id="exam-q-${ex.id}" rows="4" placeholder="이곳에 성실하게 서술형 정답을 기입해 주세요..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-semibold text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition shadow-inner"></textarea>
+                            <button onclick="checkRealtimeAnswer(${ex.id}, 'text')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-750 text-white text-xs font-bold rounded-lg transition">서술형 답안 확인 & 자가 진단</button>
+                        </div>
+                    `;
+                }
+
+                // 섞이지 않으므로 순차적으로 [문제 1] ~ [문제 10]로 정갈하게 출력됩니다.
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full ${badgeColor}">${badgeText} [${ex.score}점]</span>
+                        <span class="text-slate-400 font-bold text-sm">문제 ${ex.id}</span>
+                    </div>
+                    <h4 class="text-base sm:text-lg font-extrabold text-slate-800">${ex.question}</h4>
+                    ${inputHtml}
+                    <!-- Dynamic feedback display block -->
+                    <div id="exam-feedback-${ex.id}" class="hidden p-4 rounded-xl text-sm border font-medium"></div>
+                `;
+
+                container.appendChild(div);
+            });
+        }
+
+        // 실시간 개별 문항 정답 및 해설 피드백 표출 함수
+        function checkRealtimeAnswer(questionId, type) {
+            const ex = currentShuffledExams.find(e => e.id === questionId);
+            if (!ex) return;
+
+            const feedbackBox = document.getElementById(`exam-feedback-${ex.id}`);
+            if (!feedbackBox) return;
+
+            feedbackBox.className = "p-4 rounded-xl text-sm border font-medium mt-3";
+            feedbackBox.classList.remove('hidden');
+
+            if (type === 'choice') {
+                const radios = document.getElementsByName(`exam-q-${ex.id}`);
+                let selectedVal = null;
+                for (let i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        selectedVal = parseInt(radios[i].value);
+                        break;
+                    }
+                }
+
+                if (selectedVal !== null) {
+                    const isCorrect = (selectedVal === ex.correct);
+                    if (isCorrect) {
+                        feedbackBox.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                        feedbackBox.innerHTML = `
+                            <div class="space-y-1">
+                                <div class="font-extrabold text-emerald-800 flex items-center gap-1.5"><span class="text-base">🟢</span> 정답입니다! (${selectedVal + 1}번)</div>
+                                <p class="text-xs text-emerald-700 font-medium leading-relaxed mt-1"><strong>해설:</strong> ${ex.explanation}</p>
+                            </div>
+                        `;
+                    } else {
+                        feedbackBox.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                        feedbackBox.innerHTML = `
+                            <div class="space-y-1">
+                                <div class="font-extrabold text-rose-800 flex items-center gap-1.5"><span class="text-base">🔴</span> 오답입니다. (선택: ${selectedVal + 1}번 / 정답: ${ex.correct + 1}번)</div>
+                                <p class="text-xs text-rose-700 font-medium leading-relaxed mt-1"><strong>해설:</strong> ${ex.explanation}</p>
+                            </div>
+                        `;
+                    }
+                }
+            } else if (type === 'text') {
+                const textVal = document.getElementById(`exam-q-${ex.id}`).value.trim();
+                if (!textVal) {
+                    showAlert("⚠️ 입력 빈칸", "서술형 답안을 한 글자라도 기입하신 후 자가 진단 버튼을 눌러주세요.");
+                    feedbackBox.classList.add('hidden');
+                    return;
+                }
+
+                const keywords = ex.correctAnswerPattern.split(',').map(k => k.trim());
+                let matched = [];
+                keywords.forEach(kw => {
+                    if (textVal.includes(kw)) matched.push(kw);
+                });
+
+                const matchRatio = matched.length / keywords.length;
+                if (matchRatio >= 0.5) {
+                    feedbackBox.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+                    feedbackBox.innerHTML = `
+                        <div class="space-y-1">
+                            <div class="font-extrabold text-emerald-800 flex items-center gap-1.5"><span class="text-base">🟢</span> 모범 답안 기준 만족! (일치 핵심어: ${matched.join(', ')})</div>
+                            <p class="text-xs text-emerald-700 font-medium leading-relaxed mt-1"><strong>가이드:</strong> ${ex.explanation}</p>
+                        </div>
+                    `;
+                } else if (matchRatio > 0) {
+                    feedbackBox.classList.add('bg-amber-50', 'border-amber-200', 'text-amber-900');
+                    feedbackBox.innerHTML = `
+                        <div class="space-y-1">
+                            <div class="font-extrabold text-amber-800 flex items-center gap-1.5"><span class="text-base">🟡</span> 부분 점수 인정! (일치 핵심어: ${matched.join(', ') || '없음'})</div>
+                            <p class="text-xs text-amber-700 font-medium leading-relaxed mt-1"><strong>모범 핵심어 포함 가이드:</strong> 문장 속에 [${keywords.join(', ')}] 키워드가 포함될수록 더 높은 점수가 가산됩니다.<br><strong>해설:</strong> ${ex.explanation}</p>
+                        </div>
+                    `;
+                } else {
+                    feedbackBox.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-900');
+                    feedbackBox.innerHTML = `
+                        <div class="space-y-1">
+                            <div class="font-extrabold text-rose-800 flex items-center gap-1.5"><span class="text-base">🔴</span> 핵심 키워드 누락!</div>
+                            <p class="text-xs text-rose-700 font-medium leading-relaxed mt-1"><strong>모범 핵심 키워드:</strong> [${keywords.join(', ')}]가 포함되어야 합니다.<br><strong>해설:</strong> ${ex.explanation}</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Save input fields to localStorage immediately
+        function saveUserProfile() {
+            userProfile.grade = document.getElementById('user-grade').value;
+            userProfile.classNum = document.getElementById('user-class').value;
+            userProfile.num = document.getElementById('user-num').value;
+            userProfile.name = document.getElementById('user-name').value;
+
+            localStorage.setItem('userProfile', JSON.stringify(userProfile));
+        }
+
+        // Load saved user profile
+        function loadSavedUserProfile() {
+            const data = localStorage.getItem('userProfile');
+            if (data) {
+                userProfile = JSON.parse(data);
+                document.getElementById('user-grade').value = userProfile.grade || '';
+                document.getElementById('user-class').value = userProfile.classNum || '';
+                document.getElementById('user-num').value = userProfile.num || '';
+                document.getElementById('user-name').value = userProfile.name || '';
+            }
+        }
+
+        // Process final Formative exam answers submission (구글 스프레드시트 네이티브 연결)
+        function submitExam() {
+            const currentObj = learningData[currentSubject];
+            if (!currentObj) {
+                showAlert("⚠️ 오류", "선택된 대단원이 없습니다.");
+                return;
+            }
+
+            // 1. User Profile Input Validation
+            saveUserProfile();
+            if (!userProfile.grade || !userProfile.classNum || !userProfile.num || !userProfile.name) {
+                showAlert("⚠️ 필수 입력 누락", "학생 인적 사항(학년, 반, 번호, 이름)을 빠짐없이 입력해 주셔야 올바른 응답 수집이 진행됩니다.");
+                return;
+            }
+
+            // 10개 문제가 순차 출제되므로 순서대로 채점을 진행합니다.
+            let totalScore = 0;
+            let allAnswered = true;
+            
+            // 전송용 JSON 객체 구축 (순서대로 q1_ans, q1_grade, ... q10_ans, q10_grade)
+            const payload = {
+                grade: userProfile.grade,
+                classNum: userProfile.classNum,
+                num: userProfile.num,
+                name: userProfile.name,
+                subjectKey: currentSubject,
+                subjectTitle: currentObj.title,
+                score: 0
+            };
+
+            // 1번부터 10번까지의 원래 문제 순서대로 정오 및 제출 데이터 매핑
+            for (let qId = 1; qId <= 10; qId++) {
+                const ex = currentShuffledExams.find(e => e.id === qId);
+                if (!ex) continue;
+                
+                let userAnswerVal = "미입력";
+                let isCorrectText = "X";
+                let earnedScore = 0;
+
+                if (ex.type === 'choice') {
+                    const radios = document.getElementsByName(`exam-q-${ex.id}`);
+                    let selectedVal = null;
+                    for (let i = 0; i < radios.length; i++) {
+                        if (radios[i].checked) {
+                            selectedVal = parseInt(radios[i].value);
+                            break;
+                        }
+                    }
+
+                    if (selectedVal === null) {
+                        allAnswered = false;
+                    } else {
+                        userAnswerVal = selectedVal + 1; // "번 선택"을 전면 지우고 순수 숫자 형식으로만 설정!
+                        const isCorrect = (selectedVal === ex.correct);
+                        isCorrectText = isCorrect ? "O" : "X";
+                        if (isCorrect) earnedScore = ex.score;
+                    }
+                } else {
+                    // 서술형 질문 정오 판정
+                    const textVal = document.getElementById(`exam-q-${ex.id}`).value.trim();
+                    if (!textVal) {
+                        allAnswered = false;
+                    } else {
+                        userAnswerVal = textVal;
+                        const keywords = ex.correctAnswerPattern.split(',').map(k => k.trim());
+                        let matched = [];
+                        keywords.forEach(kw => {
+                            if (textVal.includes(kw)) matched.push(kw);
+                        });
+
+                        const matchRatio = matched.length / keywords.length;
+                        if (matchRatio >= 0.5) {
+                            earnedScore = ex.score;
+                            isCorrectText = "O";
+                        } else if (matchRatio > 0) {
+                            earnedScore = Math.round(ex.score * 0.5);
+                            isCorrectText = "△";
+                        } else {
+                            earnedScore = 0;
+                            isCorrectText = "X";
+                        }
+                    }
+                }
+
+                totalScore += earnedScore;
+                payload["q" + qId + "_ans"] = userAnswerVal;
+                payload["q" + qId + "_grade"] = isCorrectText;
+            }
+
+            if (!allAnswered) {
+                showAlert("⚠️ 미답변 문항 발견", "아직 제출하지 않은 형성평가 문항이 존재합니다. 모든 정답을 선택 또는 서술해 주세요.");
+                return;
+            }
+
+            payload.score = totalScore;
+
+            // 구글 스프레드시트 배 환경에서 작동할 경우 google.script.run 연동 실행 (수동 API 등록 및 매개변수 완전히 원천 제거!)
+            if (typeof google !== "undefined" && google.script && google.script.run) {
+                document.getElementById('submit-loading').classList.remove('hidden');
+                document.getElementById('btn-submit-exam').disabled = true;
+
+                google.script.run
+                    .withSuccessHandler(function(response) {
+                        document.getElementById('submit-loading').classList.add('hidden');
+                        document.getElementById('btn-submit-exam').disabled = false;
+                        
+                        var res = response;
+                        if (typeof response === "string") {
+                            res = JSON.parse(response);
+                        }
+                        
+                        if (res.status === "success") {
+                            const successMsg = "[스프레드시트 직접 연동 성공]\n" + userProfile.grade + "학년 " + userProfile.classNum + "반 " + userProfile.num + "번 " + userProfile.name + " 학생,\n최종 평가 점수 [" + totalScore + "점] 획득 및 구글 스프레드시트의 [" + currentObj.sheetName + "] 탭에 실시간 기록 완료되었습니다!";
+                            showAlert("✅ 실시간 제출 성공", successMsg);
+                        } else {
+                            showAlert("⚠️ 기입 실패", "서버 처리 에러: " + res.message);
+                        }
+                    })
+                    .withFailureHandler(function(err) {
+                        document.getElementById('submit-loading').classList.add('hidden');
+                        document.getElementById('btn-submit-exam').disabled = false;
+                        showAlert("⚠️ 시스템 통신 오류", "전송에 실패했습니다: " + err.message);
+                    })
+                    .recordResponse(JSON.stringify(payload));
+            } else {
+                // 구글 시트 외부(Local Canvas Preview 등) 테스트 환경에서의 Fallback 안내
+                const infoMsg = "[로컬 테스트 채점 결과]\n" + userProfile.grade + "학년 " + userProfile.classNum + "반 " + userProfile.num + "번 " + userProfile.name + " 학생,\n최종 형성평가 점수는 [" + totalScore + "점]입니다.\n\n💡 (로컬 테스트 상태): 구글 스프레드시트 내부에서 이 index.html 파일을 추가하여 웹 앱으로 실행하면, 학생의 답안 데이터가 스프레드시트로 무설정 자동 수집됩니다!";
+                showAlert("✅ 로컬 채점 완료", infoMsg);
+            }
+        }
+
+        /* ⚠️ ALERT DIALOG HELPERS */
+        let alertCallback = null;
+        function showAlert(title, message, callback = null) {
+            document.getElementById('alert-title').innerText = title;
+            document.getElementById('alert-message').innerText = message;
+            alertCallback = callback;
+            document.getElementById('custom-alert').classList.remove('hidden');
+        }
+
+        function closeAlert() {
+            document.getElementById('custom-alert').classList.add('hidden');
+            if (alertCallback) {
+                alertCallback();
+                alertCallback = null;
+            }
+        }
+    </script>
+</body>
+</html>
