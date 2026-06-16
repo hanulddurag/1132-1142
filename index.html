@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- 대칭형 홈 화면 카드 레이아웃 (image_6b0be6.png 디자인 완벽 구현) -->
+            <!-- 대칭형 홈 화면 카드 레이아웃 -->
             <div class="max-w-6xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
@@ -196,68 +196,74 @@
                 tabs: [
                     { 
                         key: 'media-char', 
-                        label: '매체 특성', 
+                        label: '매체의 특성', 
                         type: 'concept', 
                         content: `
-                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
-                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
-                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 상호 작용적 매체의 특성
-                                </h3>
-                                <p class="text-slate-600 text-sm leading-relaxed">
-                                    인터넷과 모바일 기술의 발달로 등장한 새로운 소통 매체들은 과거의 일방향적 대중 매체(TV, 라디오 등)와 달리 매우 강력한 쌍방향 소통 채널을 제공합니다.
-                                </p>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-                                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
-                                        <span class="text-2xl">🔄</span>
-                                        <h4 class="font-extrabold text-slate-800 text-base">쌍방향 의사소통</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">정보의 송신자가 수신자 경계가 모호하며 실시간으로 피드백을 주고받을 수 있습니다.</p>
-                                    </div>
-                                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
-                                        <span class="text-2xl">🚀</span>
-                                        <h4 class="font-extrabold text-slate-800 text-base">시간·공간의 초월</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">물리적 거리에 상관없이 언제 어디서나 즉각적인 소통이 가능합니다.</p>
-                                    </div>
-                                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-2">
-                                        <span class="text-2xl">🌐</span>
-                                        <h4 class="font-extrabold text-slate-800 text-base">관계망과 네트워크</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">공통의 관심사를 가진 다수의 대중이 모여 손쉽게 네트워크를 형성할 수 있습니다.</p>
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-8">
+                                <!-- 매체 특성 파트 -->
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 상호 작용적 매체의 특성
+                                    </h3>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        인터넷과 모바일 기술의 발달로 등장하여 과거의 일방향적 대중 매체와 달리 강력한 쌍방향 소통 채널을 제공함.
+                                    </p>
+                                    <div class="space-y-4 pt-2">
+                                        <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex items-start gap-4">
+                                            <span class="text-3xl">🔄</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-base mb-1">쌍방향 의사소통</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">송신자와 수신자의 경계가 모호하며, 실시간으로 피드백을 주고받음.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex items-start gap-4">
+                                            <span class="text-3xl">🚀</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-base mb-1">시간·공간의 초월</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">물리적 거리에 구애받지 않고 언제 어디서나 즉각적인 소통 가능.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex items-start gap-4">
+                                            <span class="text-3xl">🌐</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-base mb-1">관계망과 네트워크</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">공통의 관심사를 가진 다수의 사람들이 모여 손쉽게 인적 네트워크를 형성함.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        `
-                    },
-                    { 
-                        key: 'media-type', 
-                        label: '매체 종류', 
-                        type: 'concept', 
-                        content: `
-                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
-                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
-                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 디지털 매체의 구체적 예시
-                                </h3>
-                                <p class="text-slate-600 text-sm leading-relaxed">
-                                    우리가 일상 속에서 가장 자주 접하는 3대 상호 작용 매체의 예시와 공공/사적 쓰임새입니다.
-                                </p>
+
+                                <hr class="border-slate-100">
+
+                                <!-- 매체 종류 파트 -->
                                 <div class="space-y-4">
-                                    <div class="p-5 bg-amber-50/40 rounded-2xl border border-amber-100 flex items-start gap-4">
-                                        <span class="text-3xl">💻</span>
-                                        <div>
-                                            <h4 class="font-extrabold text-amber-900 text-base mb-1">누리집 (웹사이트)</h4>
-                                            <p class="text-xs text-slate-600 leading-relaxed">공공 기관, 학교 등의 공식적인 홍보와 일관된 정보 전달에 적합하며 파일 아카이빙 및 댓글 피드백 기능이 우수합니다.</p>
+                                    <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 디지털 매체의 구체적 예시
+                                    </h3>
+                                    <p class="text-slate-600 text-sm leading-relaxed">
+                                        우리가 일상 속에서 가장 자주 접하는 3대 상호 작용 매체의 예시와 공공/사적 쓰임새입니다.
+                                    </p>
+                                    <div class="space-y-4 pt-2">
+                                        <div class="p-5 bg-amber-50/40 rounded-2xl border border-amber-100 flex items-start gap-4">
+                                            <span class="text-3xl">💻</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-amber-900 text-base mb-1">누리집 (웹사이트)</h4>
+                                                <p class="text-xs text-slate-600 leading-relaxed">공공 기관, 학교 등의 공식적인 홍보와 일관된 정보 전달에 적합하며 파일 아카이빙 및 댓글 피드백 기능이 우수합니다.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex items-start gap-4">
-                                        <span class="text-3xl">💬</span>
-                                        <div>
-                                            <h4 class="font-extrabold text-indigo-900 text-base mb-1">온라인 대화방</h4>
-                                            <p class="text-xs text-slate-600 leading-relaxed">실시간 즉시 응답과 친밀하고 가벼운 의견 교류에 알맞으며, 그림말(이모티콘)이나 사진을 실시간으로 활용합니다.</p>
+                                        <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 flex items-start gap-4">
+                                            <span class="text-3xl">💬</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-base mb-1">온라인 대화방</h4>
+                                                <p class="text-xs text-slate-600 leading-relaxed">실시간 즉시 응답과 친밀하고 가벼운 의견 교류에 알맞으며, 그림말(이모티콘)이나 사진을 실시간으로 활용합니다.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="p-5 bg-emerald-50/40 rounded-2xl border border-emerald-100 flex items-start gap-4">
-                                        <span class="text-3xl">📱</span>
-                                        <div>
-                                            <h4 class="font-extrabold text-emerald-900 text-base mb-1">사회 관계망 서비스 (SNS)</h4>
-                                            <p class="text-xs text-slate-600 leading-relaxed">자신의 개성을 표현하고 팔로워들과 정보를 실시간 공유하여 글로벌 네트워크 인맥을 형성하는 데 탁월합니다.</p>
+                                        <div class="p-5 bg-emerald-50/40 rounded-2xl border border-emerald-100 flex items-start gap-4">
+                                            <span class="text-3xl">📱</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-emerald-900 text-base mb-1">사회 관계망 서비스 (SNS)</h4>
+                                                <p class="text-xs text-slate-600 leading-relaxed">자신의 개성을 표현하고 팔로워들과 정보를 실시간 공유하여 글로벌 네트워크 인맥을 형성하는 데 탁월합니다.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -289,49 +295,55 @@
                 tabs: [
                     { 
                         key: 'discuss-def', 
-                        label: '정의와 의의', 
+                        label: '정의와 역할', 
                         type: 'concept', 
                         content: `
-                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
-                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
-                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의(Discussion)의 올바른 이해
-                                </h3>
-                                <p class="text-slate-600 text-sm leading-relaxed">
-                                    토의란 공동의 현안 문제를 해결하기 위해 여러 사람이 협력적으로 지혜를 모으는 민주적 의사소통 방식입니다.
-                                </p>
-                                <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 space-y-2">
-                                    <h4 class="font-extrabold text-indigo-900 text-base">⚠️ 토론(Debate)과의 핵심 차이점</h4>
-                                    <p class="text-xs text-slate-600 leading-relaxed">
-                                        토론은 찬성과 반대로 편을 나누어 논리적 우세를 겨루는 <strong>경쟁적 소통</strong>인 반면, 토의는 편 가르기 없이 최선의 대안을 함께 조율해 나가는 <strong>협력적 소통</strong>입니다.
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-8">
+                                <!-- 정의와 의의 파트 -->
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의(Discussion)의 올바른 이해
+                                    </h3>
+                                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                                        토의란 공동의 현안 문제를 해결하기 위해 여러 사람이 협력적으로 지혜를 모으는 민주적 의사소통 방식입니다.
                                     </p>
+                                    <div class="p-5 bg-indigo-50/40 rounded-2xl border border-indigo-100 space-y-2">
+                                        <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base">⚠️ 토론(Debate)과의 핵심 차이점</h4>
+                                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                            토론은 찬성과 반대로 편을 나누어 논리적 우세를 겨루는 <strong>경쟁적 소통</strong>인 반면, 토의는 편 가르기 없이 최선의 대안을 함께 조율해 나가는 <strong>협력적 소통</strong>입니다.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        `
-                    },
-                    { 
-                        key: 'discuss-role', 
-                        label: '구성원 역할', 
-                        type: 'concept', 
-                        content: `
-                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
-                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
-                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의 참여 주체의 기본 임무
-                                </h3>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 space-y-2">
-                                        <span class="text-2xl">🗣️</span>
-                                        <h4 class="font-extrabold text-slate-800 text-base">사회자의 역할</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">중립적 위치에서 토의 흐름을 통제하고, 공평하게 발언 기회를 제공하며 요약·조율합니다.</p>
-                                    </div>
-                                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 space-y-2">
-                                        <span class="text-2xl">🙋</span>
-                                        <h4 class="font-extrabold text-slate-800 text-base">토의자의 역할</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">객관적 지표와 통계 등 정당한 근거를 들어 의견을 발표하고, 타인의 견해를 정중히 경청합니다.</p>
-                                    </div>
-                                    <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 space-y-2">
-                                        <span class="text-2xl">👥</span>
-                                        <h4 class="font-extrabold text-slate-800 text-base">청중의 역할</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">경청 중 궁금한 지점을 체크하고 질의응답 시간에 적절한 질문을 던져 대안을 정교화합니다.</p>
+
+                                <hr class="border-slate-100">
+
+                                <!-- 구성원의 역할 파트 (세로 1단 정렬, 한 단계 큰 글씨, 핵심 단어 강조 적용 완료) -->
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의 참여 주체의 기본 임무
+                                    </h3>
+                                    <div class="space-y-4 pt-2">
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">🗣️</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">사회자의 역할</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed"><strong>중립적인 위치</strong>에서 토의의 흐름을 조절하고, 참가자들에게 <strong>공평한 발언 기회</strong>를 제공하며, 의견들을 종합하여 최종 대안을 <strong>요약 및 조율</strong>함.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">🙋</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">토의자의 역할</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">자신의 의견에 대한 <strong>객관적이고 합리적인 근거</strong>를 제시하며, 다른 참여자의 의견을 정중하게 <strong>경청하고 존중</strong>하여 합의를 이끌어냄.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">👥</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">청중의 역할</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">토의 내용을 <strong>주의 깊게 경청</strong>하고, 질의응답 시간에 핵심적인 질문을 유기적으로 제기하여 토의 결과의 <strong>타당성을 검증</strong>함.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -339,74 +351,87 @@
                     },
                     { 
                         key: 'discuss-step', 
-                        label: '토의 절차', 
+                        label: '토의 절차와 유형', 
                         type: 'concept', 
                         content: `
-                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
-                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
-                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의의 일반적인 절차
-                                </h3>
-                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-slate-700">
-                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
-                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">01</div>
-                                        <div>
-                                            <strong class="text-indigo-900 block mb-1 text-sm">① 토의 주제 정하기</strong>
-                                            <p class="text-xs text-slate-500 leading-relaxed">공동체 모두가 공감하고 실재적으로 타개할 수 있는 공동의 현안 주제를 선정합니다.</p>
+                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-8">
+                                <!-- 토의 절차 파트 (세로 1단 정렬, 한 단계 큰 글씨, 핵심 단어 강조 적용 완료) -->
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 토의의 일반적인 절차
+                                    </h3>
+                                    <div class="space-y-4 pt-2">
+                                        <div class="border border-indigo-100 bg-indigo-50/20 p-5 rounded-2xl flex items-start gap-4 relative">
+                                            <div class="absolute top-3 right-4 text-2xl opacity-15 font-bold text-indigo-900">01</div>
+                                            <span class="text-2xl mt-1">📌</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">① 토의 주제 정하기</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">우리 주변의 <strong>공동체 문제</strong> 중 함께 해결해야 할 <strong>해결 가능한 주제</strong>를 신중히 검토하여 선정함.</p>
+                                            </div>
                                         </div>
-                                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-indigo-300 z-10"><i class="fa-solid fa-chevron-right"></i></div>
-                                    </div>
-                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
-                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">02</div>
-                                        <div>
-                                            <strong class="text-indigo-900 block mb-1 text-sm">② 토의 준비하기</strong>
-                                            <p class="text-xs text-slate-500 leading-relaxed">각자의 역할을 배분하고, 회의 주제에 맞는 제안 대안 및 논리적 지표 근거들을 준비합니다.</p>
+                                        <div class="border border-indigo-100 bg-indigo-50/20 p-5 rounded-2xl flex items-start gap-4 relative">
+                                            <div class="absolute top-3 right-4 text-2xl opacity-15 font-bold text-indigo-900">02</div>
+                                            <span class="text-2xl mt-1">📝</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">② 토의 준비하기</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">사회자와 토의자의 <strong>역할을 확실하게 배분</strong>하고, 주제 해결을 뒷받침할 <strong>객관적인 자료와 근거</strong>를 수집함.</p>
+                                            </div>
                                         </div>
-                                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-indigo-300 z-10"><i class="fa-solid fa-chevron-right"></i></div>
-                                    </div>
-                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
-                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">03</div>
-                                        <div>
-                                            <strong class="text-indigo-900 block mb-1 text-sm">③ 토의하기</strong>
-                                            <p class="text-xs text-slate-500 leading-relaxed">모든 구성원이 수평적인 상태에서 다양하게 의견 교환을 진행하고 대안들을 검토 조율합니다.</p>
+                                        <div class="border border-indigo-100 bg-indigo-50/20 p-5 rounded-2xl flex items-start gap-4 relative">
+                                            <div class="absolute top-3 right-4 text-2xl opacity-15 font-bold text-indigo-900">03</div>
+                                            <span class="text-2xl mt-1">🗣️</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">③ 토의하기 (의견 나누기)</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">수집해 온 여러 대안들을 <strong>민주적인 분위기</strong> 속에서 자유롭게 제안하고, 각 대안의 <strong>장단점을 비교 분석</strong>함.</p>
+                                            </div>
                                         </div>
-                                        <div class="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 text-indigo-300 z-10"><i class="fa-solid fa-chevron-right"></i></div>
-                                    </div>
-                                    <div class="border border-indigo-100 bg-indigo-50/20 p-4 rounded-xl flex flex-col justify-between relative">
-                                        <div class="absolute top-2 right-3 text-2xl opacity-10 font-bold">04</div>
-                                        <div>
-                                            <strong class="text-indigo-900 block mb-1 text-sm">④ 토의 내용 정리하기</strong>
-                                            <p class="text-xs text-slate-500 leading-relaxed">도출된 장단점을 바탕으로 합리적인 최선책을 선택하고 결과를 요약 합의 및 기록합니다.</p>
+                                        <div class="border border-indigo-100 bg-indigo-50/20 p-5 rounded-2xl flex items-start gap-4 relative">
+                                            <div class="absolute top-3 right-4 text-2xl opacity-15 font-bold text-indigo-900">04</div>
+                                            <span class="text-2xl mt-1">✅</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">④ 토의 내용 정리하기</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">비교 과정을 거쳐 가장 실현 가능하고 <strong>합리적인 최선책을 선택</strong>하고, 토의 결과를 <strong>정갈하게 요약 정리 및 기록</strong>함.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        `
-                    },
-                    { 
-                        key: 'discuss-type', 
-                        label: '토의 유형', 
-                        type: 'concept', 
-                        content: `
-                            <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
-                                <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
-                                    <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 4대 토의 유형의 차이
-                                </h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">⭕ 원탁 토의 (Round-table)</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">상하관계 없이 전원이 대등하고 유기적으로 동그랗게 둘러앉아 친근하게 소통하는 비공식적 토의입니다.</p>
-                                    </div>
-                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">👥 패널 토의 (Panel Discussion)</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">서로 의견이 상반되거나 특수 지식을 가진 소수 배심원들이 다수 청중 앞에서 사회자 지휘로 공개 의견을 펴는 형태입니다.</p>
-                                    </div>
-                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">🎓 심포지엄 (Symposium)</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">하나의 공식 주제를 두고 전문가들이 공식적인 발표회를 연속적으로 전개한 뒤 정돈된 토의를 맺는 고도의 학술적 방식입니다.</p>
-                                    </div>
-                                    <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                                        <h4 class="font-extrabold text-indigo-900 text-sm mb-1">🏛️ 포럼 (Forum)</h4>
-                                        <p class="text-xs text-slate-500 leading-relaxed">현안 연설이 끝난 후 사회자의 안내로 넓은 공간에 참여한 모든 청중들이 발언자에게 정면으로 피드백을 맞교환하는 대중형 토의입니다.</p>
+
+                                <hr class="border-slate-100">
+
+                                <!-- 토의 유형 파트 (세로 1단 정렬, 한 단계 큰 글씨, 핵심 단어 강조 적용 완료) -->
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-black text-indigo-600 mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-6 bg-indigo-600 rounded-full"></span> 4대 토의 유형의 차이
+                                    </h3>
+                                    <div class="space-y-4 pt-2">
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">⭕</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">원탁 토의 (Round-table)</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">별도의 상하 관계나 발언 순서 제한 없이 <strong>참가자 전원이 대등한 입장</strong>에서 둥글게 모여 편하게 아이디어를 나누는 <strong>비공식적 토의</strong> 형태임.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">👥</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">패널 토의 (Panel Discussion)</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">특정 주제에 대해 서로 의견을 달리하는 <strong>배심원(패널)들이 다수의 청중 앞에서</strong> 사회자의 세련된 지휘에 따라 공개적으로 논의를 전개하는 <strong>공개형 대화</strong>임.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">🎓</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">심포지엄 (Symposium)</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">학술적 주제에 관하여 권위 있는 <strong>전문가들이 차례대로 공식 발표</strong>를 진행한 뒤, 발표자 간 또는 청중과의 연계 피드백을 진행하는 <strong>고도의 전문적 강연회</strong>임.</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-5 rounded-2xl border border-slate-100 bg-slate-50 flex items-start gap-4">
+                                            <span class="text-3xl">🏛️</span>
+                                            <div>
+                                                <h4 class="font-extrabold text-indigo-900 text-sm sm:text-base mb-1">포럼 (Forum)</h4>
+                                                <p class="text-sm text-slate-600 leading-relaxed">대표 발언자의 간략한 기조 강연이 끝난 후, 모인 <strong>모든 청중이 직접 토의 주체가 되어</strong> 질의응답을 주도하고 의견을 직접 개진하는 <strong>민주적인 대중 토의</strong> 형태임.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -415,7 +440,6 @@
                     { key: 'exam', label: '형성 평가', type: 'exam' }
                 ],
                 exams: [
-                    // 객관식 7문항, OX 2문항, 서술형 1문항 = 총 10문항 (답안 골고루 재분배 완수)
                     { id: 1, type: 'choice', question: "토의(Discussion)라는 말하기 활동의 근본 취지와 의의로 가장 적절한 서술은?", options: ["경쟁을 붙여 찬성과 반대 양자의 생존 승패를 입증한다.", "다수의 공동 현안 문제를 다각도로 보듬고 협력하여 대안을 구축한다.", "한 명의 리더가 기재한 규칙에 절대 맹목 복종하게 길들인다.", "주제와 무관한 가벼운 소담으로 지인과 시간을 소모한다."], correct: 1, score: 10, explanation: "토의는 찬반 갈등과 경쟁 우열을 다투는 토론과 다른 점이 있으며, 공동의 고민 해결을 위한 협력을 지향합니다." },
                     { id: 2, type: 'choice', question: "민주적 토의의 4대 진행 단계를 올바르고 질서정연하게 서열화한 배열은?", options: ["결과 발표 -> 의견 도배 -> 주제 버리기 -> 퇴장", "의견 고집 -> 대안 무시 -> 토의하기 -> 사회자 해임", "주제 선정 -> 토의 준비 -> 토의하기 -> 결과 정리", "도구 준비 -> 자리 청소 -> 사진 인화 -> 결과 분실"], correct: 2, score: 10, explanation: "주제를 고르고 준비를 완전히 행한 후 본격적 소통을 거쳐 결과를 합의 도출하는 4단계 흐름을 지닙니다." },
                     { id: 3, type: 'choice', question: "'우리 반 학급 자리 교체안'을 회의하기 전에 토의자가 준비할 필수 정보로 가장 알맞은 것은?", options: ["운동장의 잔디 종류 확인", "담임교사의 지난 주말 취미 분석", "현재 우리 반 구성원들이 자리를 바꿀 때 느끼는 고충 및 해법 제안 근거 마련", "청소용 빗자루 수명 분석"], correct: 2, score: 10, explanation: "준비 과정에서는 오늘 다룰 문제 현상에 관한 고충 실태나 제안 배경을 입증하는 자료가 있어야 합니다." },
